@@ -1,642 +1,860 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Rimmy Gupta - Mechanical Engineering Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-font-family:'Exo 2',sans-serif;
-
-background:linear-gradient(135deg,#0a0a23,#1a0033,#0f0f4f,#2a1a4a,#0a0a23);
-
-background-size:400% 400%;
-
-animation:gradientShift 15s ease infinite;
-
-color:#fff;
-
-overflow-x:hidden;
-
-}
-
-@keyframes gradientShift{
-
-0%{background-position:0% 50%}
-
-50%{background-position:100% 50%}
-
-100%{background-position:0% 50%}
-
-}
-
-/* PARTICLES */
-
-.bg-particles{
-
-position:fixed;
-
-width:100%;
-
-height:100%;
-
-top:0;
-
-left:0;
-
-z-index:1;
-
-pointer-events:none;
-
-}
-
-.particle{
-
-position:absolute;
-
-border-radius:50%;
-
-background:radial-gradient(circle,rgba(138,43,226,0.6),transparent);
-
-animation:float 20s infinite linear;
-
-}
-
-.particle:nth-child(1){width:80px;height:80px;left:10%;animation-delay:0s}
-
-.particle:nth-child(2){width:50px;height:50px;left:80%;animation-delay:5s}
-
-.particle:nth-child(3){width:120px;height:120px;left:60%;animation-delay:10s}
-
-.particle:nth-child(4){width:60px;height:60px;left:20%;animation-delay:15s}
-
-@keyframes float{
-
-0%{transform:translateY(100vh);opacity:0}
-
-10%{opacity:1}
-
-90%{opacity:1}
-
-100%{transform:translateY(-100px);opacity:0}
-
-}
-
-/* NAV */
-
-.nav{
-
-position:fixed;
-
-top:30px;
-
-right:30px;
-
-z-index:1000;
-
-display:flex;
-
-gap:15px;
-
-}
-
-.nav-btn{
-
-background:rgba(255,255,255,0.1);
-
-padding:10px 20px;
-
-border-radius:40px;
-
-font-family:'Orbitron';
-
-color:white;
-
-text-decoration:none;
-
-border:1px solid rgba(138,43,226,0.4);
-
-transition:.3s;
-
-}
-
-.nav-btn:hover{
-
-background:#8a2be2;
-
-transform:translateY(-3px)
-
-}
-
-/* HERO */
-
-.hero{
-
-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:0 10%;
-
-position:relative;
-
-z-index:5;
-
-}
-
-.hero h1{
-
-font-family:'Orbitron';
-
-font-size:5rem;
-
-background:linear-gradient(135deg,#8a2be2,#00bfff);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-}
-
-.subtitle{
-
-font-size:1.4rem;
-
-margin:20px 0;
-
-color:rgba(255,255,255,0.8);
-
-}
-
-.hero p{
-
-max-width:500px;
-
-line-height:1.7;
-
-color:rgba(255,255,255,0.7);
-
-}
-
-/* BUTTON */
-
-.btn{
-
-padding:15px 35px;
-
-border-radius:40px;
-
-border:none;
-
-font-family:'Orbitron';
-
-cursor:pointer;
-
-margin-top:20px;
-
-}
-
-.btn-primary{
-
-background:linear-gradient(135deg,#8a2be2,#00bfff);
-
-color:white;
-
-}
-
-/* MECHANICAL */
-
-.hero-illustration{
-
-width:400px;
-
-height:400px;
-
-position:relative;
-
-}
-
-.mech-avatar{
-
-width:300px;
-
-height:300px;
-
-border-radius:50%;
-
-background:radial-gradient(circle,#8a2be2,transparent);
-
-animation:spin 15s linear infinite;
-
-position:absolute;
-
-top:50%;
-
-left:50%;
-
-transform:translate(-50%,-50%);
-
-}
-
-@keyframes spin{
-
-0%{transform:translate(-50%,-50%) rotate(0)}
-
-100%{transform:translate(-50%,-50%) rotate(360deg)}
-
-}
-
-.gear{
-
-position:absolute;
-
-border-radius:50%;
-
-border:3px solid #8a2be2;
-
-animation:gearRotate 6s linear infinite;
-
-}
-
-.gear-1{width:100px;height:100px;top:10%;left:10%}
-
-.gear-2{width:70px;height:70px;bottom:10%;right:10%}
-
-.gear-3{width:80px;height:80px;top:60%;left:60%}
-
-@keyframes gearRotate{
-
-0%{transform:rotate(0)}
-
-100%{transform:rotate(360deg)}
-
-}
-
-/* SECTION */
-
-.section{
-
-padding:120px 10%;
-
-max-width:1200px;
-
-margin:auto;
-
-position:relative;
-
-z-index:5;
-
-}
-
-.section h2{
-
-font-family:'Orbitron';
-
-font-size:3rem;
-
-text-align:center;
-
-margin-bottom:60px;
-
-background:linear-gradient(135deg,#8a2be2,#00bfff);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-}
-
-/* GLASS CARD */
-
-.glass-card{
-
-background:rgba(255,255,255,0.05);
-
-padding:40px;
-
-border-radius:20px;
-
-backdrop-filter:blur(20px);
-
-border:1px solid rgba(255,255,255,0.1);
-
-}
-
-/* PROJECT */
-
-.projects-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-gap:40px;
-
-}
-
-.project-card{
-
-background:rgba(255,255,255,0.05);
-
-border-radius:20px;
-
-padding:25px;
-
-transition:.4s;
-
-}
-
-.project-card:hover{
-
-transform:translateY(-10px);
-
-}
-
-/* SKILLS */
-
-.skills-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-
-gap:30px;
-
-text-align:center;
-
-}
-
-.skill-circle{
-
-width:120px;
-
-height:120px;
-
-border-radius:50%;
-
-background:conic-gradient(#8a2be2 0deg 270deg,rgba(255,255,255,0.1) 270deg);
-
-margin:auto;
-
-}
-
-/* CONTACT */
-
-.contact-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:30px;
-
-}
-
-.contact-item{
-
-display:flex;
-
-gap:20px;
-
-padding:20px;
-
-background:rgba(255,255,255,0.05);
-
-border-radius:15px;
-
-}
-
-.contact-icon{
-
-font-size:1.8rem;
-
-color:#8a2be2;
-
-}
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-
-padding:40px;
-
-margin-top:80px;
-
-color:rgba(255,255,255,0.6);
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimmy Gupta - Mechanical Engineering Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0E0E0E;
+            --text-primary: #E5D3B3;
+            --text-secondary: #B8A98B;
+            --accent: #D4C4A8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(40px, 8vw, 120px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .hero-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(8rem, 20vw, 24rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            margin-bottom: 60px;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.8s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.2s forwards;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        .hero-image {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            opacity: 0;
+            animation: fadeInRight 1.5s ease 1s forwards;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, var(--accent), transparent);
+            z-index: -1;
+            opacity: 0.3;
+            border-radius: 8px;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #333 100%);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .hero-image-placeholder::before {
+            content: 'RIMMY GUPTA';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            letter-spacing: 4px;
+        }
+
+        .hero-arrow {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            font-size: 24px;
+            color: var(--accent);
+            animation: bounce 2s infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 140px clamp(40px, 8vw, 120px);
+            max-width: 1400px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 400;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 80px;
+            letter-spacing: 0.03em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #333 100%);
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .about-image::before {
+            content: 'ABOUT';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--text-secondary);
+            opacity: 0.2;
+            letter-spacing: 6px;
+        }
+
+        .about-text h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .about-text p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .info-item h4 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .info-item p {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Experience Section */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 40px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: -40px;
+            right: 40px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            left: 40px;
+            right: auto;
+        }
+
+        .timeline-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .timeline-subtitle {
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .timeline-image {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #333 100%);
+            border-radius: 12px;
+            margin: 0 40px;
+            position: relative;
+        }
+
+        .timeline-image::before {
+            content: 'FACTORY';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            opacity: 0.3;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+        }
+
+        .project-card {
+            position: relative;
+            height: 500px;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 60px 120px rgba(0,0,0,0.8);
+        }
+
+        .project-image {
+            height: 60%;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #333 100%);
+            position: relative;
+        }
+
+        .project-image::before {
+            content: attr(data-title);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(24px, 4vw, 36px);
+            color: var(--text-secondary);
+            opacity: 0.3;
+            letter-spacing: 2px;
+            text-align: center;
+            width: 80%;
+        }
+
+        .project-content {
+            padding: 40px;
+            height: 40%;
+        }
+
+        .project-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .project-team {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Leadership Section */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .leadership-card {
+            padding: 40px;
+            border-left: 4px solid var(--accent);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .leadership-card:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateX(20px);
+        }
+
+        .leadership-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .skill-tag {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .contact-text h4 {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .contact-text p {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 32px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212,196,168,0.1);
+        }
+
+        .form-group textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            padding: 20px 60px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(212,196,168,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px clamp(40px, 8vw, 120px) 40px;
+                       text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: 120px;
+        }
+
+        .footer-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%,20%,50%,80%,100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+
+        @media (max-width: 1024px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 60px;
+                padding-top: 120px;
+            }
+
+            .hero-title {
+                font-size: 18vw;
+            }
+
+            .hero-image {
+                width: 320px;
+                height: 420px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                margin-left: 40px;
+            }
+
+            .timeline-image {
+                margin: 20px 0;
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .nav {
+                right: 20px;
+                top: 20px;
+                gap: 15px;
+            }
+
+            .section {
+                padding: 100px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 40px;
+            }
+
+        }
+
+    </style>
 </head>
 
 <body>
 
-<div class="bg-particles">
+<!-- Navigation -->
 
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
-<div class="particle"></div>
+<nav class="nav">
+<a class="nav-link" href="#about">About</a>
+<a class="nav-link" href="#experience">Experience</a>
+<a class="nav-link" href="#projects">Projects</a>
+<a class="nav-link" href="#skills">Skills</a>
+<a class="nav-link" href="#contact">Contact</a>
+</nav>
 
+
+<!-- Footer -->
+
+<footer class="footer">
+
+<div class="footer-title">
+Rimmy Gupta
 </div>
 
-<div class="nav">
-
-<a href="#about" class="nav-btn">About</a>
-<a href="#projects" class="nav-btn">Projects</a>
-<a href="#skills" class="nav-btn">Skills</a>
-<a href="#contact" class="nav-btn">Contact</a>
-
+<div class="footer-text">
+Mechanical Engineering Portfolio
 </div>
 
-<section class="hero">
+<div class="footer-links">
 
-<div>
+<a href="mailto:rimmygupta2403@gmail.com">
+<i class="fas fa-envelope"></i>
+</a>
 
-<h1>Rimmy Gupta</h1>
+<a href="https://linkedin.com/in/rimmygupta2403" target="_blank">
+<i class="fab fa-linkedin"></i>
+</a>
 
-<div class="subtitle">Mechanical Engineering Student</div>
-
-<p>
-B.Tech Mechanical Engineering student interested in robotics,
-mechanical systems, and engineering innovation.
-</p>
-
-<button class="btn btn-primary">View Projects</button>
-
-</div>
-
-<div class="hero-illustration">
-
-<div class="mech-avatar"></div>
-
-<div class="gear gear-1"></div>
-<div class="gear gear-2"></div>
-<div class="gear gear-3"></div>
+<a href="#">
+<i class="fas fa-globe"></i>
+</a>
 
 </div>
-
-</section>
-
-<section class="section" id="about">
-
-<h2>About Me</h2>
-
-<div class="glass-card">
-
-I am a Mechanical Engineering undergraduate at SVNIT focused on
-understanding mechanical systems, robotics, drives, and transmission
-mechanisms used in real engineering systems.
-
-</div>
-
-</section>
-
-<section class="section" id="projects">
-
-<h2>Projects</h2>
-
-<div class="projects-grid">
-
-<div class="project-card">
-
-<h3>Line Follower Robot</h3>
-
-<p>Autonomous robot that follows a track using sensors and control logic.</p>
-
-</div>
-
-<div class="project-card">
-
-<h3>Walking Bot Mechanism</h3>
-
-<p>Mechanical linkage based walking mechanism prototype.</p>
-
-</div>
-
-<div class="project-card">
-
-<h3>Transmission System Study</h3>
-
-<p>Comparison of gear, chain, and belt drive systems.</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="skills">
-
-<h2>Skills</h2>
-
-<div class="skills-grid">
-
-<div>
-<div class="skill-circle"></div>
-<p>Mechanical Design</p>
-</div>
-
-<div>
-<div class="skill-circle"></div>
-<p>Robotics</p>
-</div>
-
-<div>
-<div class="skill-circle"></div>
-<p>Control Systems</p>
-</div>
-
-<div>
-<div class="skill-circle"></div>
-<p>Engineering Analysis</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="contact">
-
-<h2>Contact</h2>
-
-<div class="contact-grid">
-
-<div class="contact-item">
-
-<i class="fa-solid fa-envelope contact-icon"></i>
-
-<div>
-
-<h4>Email</h4>
-
-<p>rimmygupta2403@gmail.com</p>
-
-</div>
-
-</div>
-
-<div class="contact-item">
-
-<i class="fa-brands fa-linkedin contact-icon"></i>
-
-<div>
-
-<h4>LinkedIn</h4>
-
-<p>linkedin.com/in/rimmy-gupta2403</p>
-
-</div>
-
-</div>
-
-<div class="contact-item">
-
-<i class="fa-solid fa-location-dot contact-icon"></i>
-
-<div>
-
-<h4>Location</h4>
-
-<p>Surat, India</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-© 2026 Rimmy Gupta | Mechanical Engineering Portfolio
 
 </footer>
 
-</body>
 
+<script>
+
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('animate');
+
+}
+
+});
+
+}, { threshold: 0.1 });
+
+sections.forEach(section => {
+
+observer.observe(section);
+
+});
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+anchor.addEventListener('click', function (e) {
+
+e.preventDefault();
+
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+
+behavior: 'smooth'
+
+});
+
+});
+
+});
+
+</script>
+
+</body>
 </html>
