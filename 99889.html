@@ -4,907 +4,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rimmy Gupta - Mechanical Engineering Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Rimmy Gupta - Mechanical Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary-bg: #0a0a0a;
+            --steel-grey: #2d3748;
+            --metallic-silver: #a0aec0;
+            --accent-blue: #4299e1;
+            --grid-blue: rgba(66, 153, 225, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --industrial-bg: #1a1a1a;
-            --steel-grey: #2d2d2d;
-            --industrial-gold: #D4AF37;
-            --copper-orange: #D2691E;
-            --steel-blue: #4682B4;
-            --chrome-silver: #C0C0C0;
-            --text-primary: #F5F5F5;
-            --text-secondary: #B0B0B0;
-            --glass-bg: rgba(255,255,255,0.03);
-            --metal-glow: 0 0 40px rgba(212,175,55,0.6);
-            --shadow-industrial: 0 30px 80px rgba(0,0,0,0.8);
-        }
-
         body {
             font-family: 'Exo 2', sans-serif;
-            background: var(--industrial-bg);
-            color: var(--text-primary);
+            background: var(--primary-bg);
+            color: white;
             overflow-x: hidden;
-            cursor: none;
         }
 
-        /* Industrial Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 16px;
-            height: 16px;
-            background: radial-gradient(circle, var(--industrial-gold) 0%, var(--steel-blue) 50%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: var(--metal-glow);
-            transition: all 0.1s ease;
-        }
-
-        .cursor.gear {
-            width: 24px;
-            height: 24px;
-            background: none;
-            mask: radial-gradient(circle, black 40%, transparent 50%);
-            -webkit-mask: radial-gradient(circle, black 40%, transparent 50%);
-            border: 2px solid var(--industrial-gold);
-            animation: rotateGear 2s linear infinite;
-        }
-
-        @keyframes rotateGear {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Navigation - Industrial Control Panel */
-        .nav {
-            position: fixed;
-            top: 50px;
-            left: 50px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .nav-btn {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(145deg, #333, #222);
-            border: 3px solid var(--chrome-silver);
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.6);
-        }
-
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, var(--industrial-gold) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-5px);
-            border-color: var(--industrial-gold);
-            box-shadow: var(--metal-glow), 0 12px 30px rgba(0,0,0,0.8);
-        }
-
-        .nav-btn:hover::before {
-            transform: translate(-50%, -50%) scale(1.2);
-            box-shadow: 0 0 20px var(--industrial-gold);
-        }
-
-        .nav-btn.active {
-            background: linear-gradient(145deg, var(--industrial-gold), var(--copper-orange));
-            border-color: var(--chrome-silver);
-            box-shadow: var(--metal-glow);
-        }
-
-        /* Hero Section - Industrial Split Screen */
-        .hero {
-            height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-left {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0 80px;
+        .hero-bg {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(66, 153, 225, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--steel-grey) 0%, var(--primary-bg) 100%);
             position: relative;
         }
 
-        .photo-frame {
-            width: 400px;
-            height: 400px;
-            position: relative;
-            margin-bottom: 60px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .photo-hexagon {
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(50% 0%, 80% 20%, 100% 60%, 80% 100%, 20% 100%, 0% 60%, 20% 20%);
-            background: linear-gradient(145deg, #444, #333);
-            border: 8px solid var(--industrial-gold);
-            position: relative;
-            box-shadow: var(--shadow-industrial), inset 0 0 40px rgba(0,0,0,0.5);
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
-
-        .photo-hexagon::before {
-            content: '';
-            position: absolute;
-            inset: 20px;
-            background: linear-gradient(135deg, #666, #888, #aaa);
-            clip-path: polygon(50% 0%, 80% 20%, 100% 60%, 80% 100%, 20% 100%, 0% 60%, 20% 20%);
-            filter: brightness(1.2) contrast(1.1);
-            box-shadow: inset 0 0 30px rgba(255,255,255,0.2);
-        }
-
-        .photo-hexagon::after {
-            content: 'RIMMY GUPTA';
-            position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 28px;
-            color: var(--industrial-gold);
-            letter-spacing: 4px;
-            text-shadow: 0 0 20px var(--industrial-gold);
-        }
-
-        .hero-text h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(212,175,55,0.5);
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 500px;
-        }
-
-        /* Hero Right - Mechanical Graphics */
-        .hero-right {
-            position: relative;
-            background: linear-gradient(135deg, var(--steel-grey), var(--industrial-bg));
-            overflow: hidden;
-        }
-
-        #mechanical-canvas {
+        .grid-overlay {
+            background-image: 
+                linear-gradient(rgba(66, 153, 225, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(66, 153, 225, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        /* Industrial Sections */
-        .section {
-            min-height: 100vh;
-            padding: 120px clamp(40px, 8vw, 100px);
+        .gear {
+            animation: rotate 20s linear infinite;
+        }
+
+        .gear-slow {
+            animation: rotate 30s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .floating-gear {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(180deg, transparent 0%, var(--accent-blue) 50%, transparent 100%);
             position: relative;
-            opacity: 0;
-            transform: translateY(80px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(3.5rem, 10vw, 6rem);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 80px;
-            background: linear-gradient(135deg, var(--industrial-gold), var(--copper-orange), var(--steel-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            filter: drop-shadow(0 0 30px rgba(212,175,55,0.4));
-        }
-
-        /* Metal Cards */
-        .metal-card {
-            background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-            border: 2px solid var(--chrome-silver);
-            border-radius: 20px;
-            padding: 50px;
-            position: relative;
-            transition: all 0.4s ease;
             overflow: hidden;
-            box-shadow: var(--shadow-industrial);
         }
 
-        .metal-card::before {
+        .section-divider::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--industrial-gold), var(--copper-orange), var(--steel-blue));
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .metal-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--industrial-gold);
-            box-shadow: var(--metal-glow), var(--shadow-industrial);
-        }
-
-        /* Experience Timeline */
-        .timeline {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
             bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--chrome-silver), var(--industrial-gold));
-            transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(212,175,55,0.3);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.05) 10px,
+                    rgba(255,255,255,0.05) 12px
+                );
+            animation: move-diagonal 20s linear infinite;
+        }
+
+        @keyframes move-diagonal {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(0) scale(1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(66, 153, 225, 0.3);
         }
 
         .timeline-item {
-            display: flex;
-            margin-bottom: 120px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
+            position: relative;
         }
 
-        .timeline-item.visible {
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-blue), transparent);
+            transform: translateX(-50%);
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--accent-blue), #63b3ed);
+            transition: width 2s ease-in-out;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: var(--primary-bg);
+        }
+
+        .loader-gear {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--steel-grey);
+            border-top: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-badge {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--industrial-gold), var(--copper-orange));
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            top: 20px;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: var(--metal-glow);
-            z-index: 2;
-        }
-
-        .timeline-content {
-            flex: 1;
-            margin: 0 50px;
-            position: relative;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 60px;
-        }
-
-        .project-3d {
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 30px 0;
-            border: 3px solid var(--chrome-silver);
-            box-shadow: var(--shadow-industrial);
-            position: relative;
-        }
-
-        .project-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .stat-badge {
-            background: linear-gradient(135deg, var(--steel-blue), var(--industrial-gold));
-            color: #000;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(70,130,180,0.4);
-        }
-
-        /* Skills - Industrial Gauges */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-        }
-
-        .gauge-container {
-            text-align: center;
-            position: relative;
-        }
-
-        .gauge {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: conic-gradient(var(--industrial-gold) 0deg 80%, var(--steel-grey) 80deg);
-            margin: 0 auto 20px;
-            position: relative;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.5), var(--metal-glow);
-        }
-
-        .gauge-inner {
-            position: absolute;
-            inset: 20px;
-            background: linear-gradient(145deg, #333, #222);
-            border-radius: 50%;
-            border: 4px solid var(--chrome-silver);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Orbitron', monospace;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--industrial-gold);
-        }
-
-        /* Contact - Control Panel */
-        .control-panel {
-            background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
-            border: 4px solid var(--chrome-silver);
-            border-radius: 24px;
-            padding: 60px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .contact-control {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            padding: 30px;
-            background: linear-gradient(145deg, #333, #222);
-            border-radius: 16px;
-            border: 2px solid var(--chrome-silver);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .contact-control:hover {
-            border-color: var(--industrial-gold);
-            box-shadow: var(--metal-glow);
-            transform: translateY(-5px);
-        }
-
-        .control-knob {
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle, var(--industrial-gold) 0%, var(--copper-orange) 70%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            box-shadow: inset 0 3px 8px rgba(0,0,0,0.4), 0 0 25px rgba(212,175,55,0.5);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-right {
-                height: 50vh;
-            }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         @media (max-width: 768px) {
-            .nav {
+            .parallax {
+                background-attachment: scroll;
+            }
+            .timeline-item::before {
                 left: 20px;
-                top: 20px;
-                flex-direction: row;
-            }
-            
-            .photo-frame {
-                width: 300px;
-                height: 300px;
-            }
-            
-            .section {
-                padding: 80px 20px;
             }
         }
 
-        /* Scroll Animations */
-        .parallax-gear {
-            position: fixed;
-            opacity: 0.1;
-            z-index: 1;
-            pointer-events: none;
+        .hexagon {
+            width: 200px;
+            height: 115.47px;
+            background: var(--accent-blue);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            position: relative;
+            transition: all 0.3s ease;
         }
+
+        .hexagon::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: var(--primary-bg);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .orbitron { font-family: 'Orbitron', monospace; }
     </style>
 </head>
 <body>
-    <!-- Custom Industrial Cursor -->
-    <div class="cursor" id="cursor"></div>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+        <div class="loader-gear mb-4"></div>
+        <div class="text-lg orbitron tracking-wider">INITIALIZING SYSTEMS...</div>
+    </div>
 
-    <!-- Navigation Control Panel -->
-    <nav class
-        ="nav">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold orbitron text-accent-blue">RG</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="hover:text-accent-blue transition-all duration-300">Home</a>
+                <a href="#about" class="hover:text-accent-blue transition-all duration-300">About</a>
+                <a href="#projects" class="hover:text-accent-blue transition-all duration-300">Projects</a>
+                <a href="#experience" class="hover:text-accent-blue transition-all duration-300">Experience</a>
+                <a href="#skills" class="hover:text-accent-blue transition-all duration-300">Skills</a>
+                <a href="#contact" class="hover:text-accent-blue transition-all duration-300">Contact</a>
+            </div>
+            <button class="md:hidden">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
 
-    <div class="nav-btn active" data-section="hero"></div>
-    <div class="nav-btn" data-section="experience"></div>
-    <div class="nav-btn" data-section="projects"></div>
-    <div class="nav-btn" data-section="skills"></div>
-    <div class="nav-btn" data-section="contact"></div>
-
-</nav>
-
-
-<!-- HERO SECTION -->
-<section id="hero" class="hero">
-
-    <div class="hero-left">
-
-        <div class="photo-frame">
-            <div class="photo-hexagon"></div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Gears -->
+        <div class="absolute top-20 left-10 w-20 h-20 floating-gear">
+            <svg viewBox="0 0 100 100" class="w-full h-full gear-slow">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="var(--steel-grey)" stroke-width="3"/>
+                <circle cx="50" cy="50" r="30" fill="none" stroke="var(--metallic-silver)" stroke-width="2"/>
+                <g stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="50" y1="10" x2="50" y2="20"/>
+                    <line x1="50" y1="80" x2="50" y2="90"/>
+                    <line x1="10" y1="50" x2="20" y2="50"/>
+                    <line x1="80" y1="50" x2="90" y2="50"/>
+                    <line x1="25" y1="25" x2="35" y2="35"/>
+                    <line x1="65" y1="65" x2="75" y2="75"/>
+                    <line x1="25" y1="75" x2="35" y2="65"/>
+                    <line x1="65" y1="25" x2="75" y2="35"/>
+                </g>
+            </svg>
+        </div>
+        <div class="absolute bottom-20 right-10 w-16 h-16 floating-gear" style="animation-delay: -2s">
+            <svg viewBox="0 0 100 100" class="w-full h-full gear">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="var(--steel-grey)" stroke-width="3"/>
+                <g stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round">
+                    <line x1="50" y1="10" x2="50" y2="25"/>
+                    <line x1="50" y1="75" x2="50" y2="90"/>
+                    <line x1="10" y1="50" x2="25" y2="50"/>
+                    <line x1="75" y1="50" x2="90" y2="50"/>
+                </g>
+            </svg>
         </div>
 
-        <div class="hero-text">
-            <h1>RIMMY GUPTA</h1>
-
-            <div class="subtitle">
-                Mechanical Engineering Student | SVNIT Surat
+        <div class="container mx-auto px-6 text-center relative z-10 fade-in">
+            <!-- Hexagonal Profile Frame -->
+            <div class="mx-auto mb-12 relative">
+                <div class="hexagon mx-auto mb-8 cursor-pointer hover:scale-110 transition-transform duration-500" onclick="document.getElementById('profile-modal').classList.add('active')">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Rimmy Gupta" class="w-full h-full object-cover rounded-full absolute inset-0 clip-path-inherit">
+                </div>
             </div>
 
-            <p>
-                Mechanical Engineering student with strong system-level thinking and
-                analytical problem solving developed through hands-on technical
-                projects. Experience in robotics mechanisms, drivetrain systems,
-                walking robots and conceptual exploration systems.
+            <h1 class="text-6xl md:text-7xl lg:text-8xl orbitron font-black mb-6 bg-gradient-to-r from-accent-blue to-white bg-clip-text text-transparent">
+                RIMMY GUPTA
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 opacity-90 font-medium">Mechanical Engineer</p>
+            <p class="text-lg md:text-xl mb-16 max-w-2xl mx-auto leading-relaxed opacity-80">
+                Robotics | Manufacturing Systems | AI Systems Engineering | Product Analytics
             </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="#contact" class="btn-secondary">Download Resume</a>
+            </div>
         </div>
+    </section>
 
-    </div>
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
 
-    <div class="hero-right">
-        <canvas id="mechanical-canvas"></canvas>
-    </div>
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-gradient-to-b from-primary-bg to-steel-grey relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-6xl orbitron font-black mb-6">ABOUT ME</h2>
+                <div class="w-24 h-1 bg-accent-blue mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-steel-grey/50 backdrop-blur-md p-10 rounded-2xl border border-steel-grey/30 fade-in">
+                    <div class="text-4xl mb-6 text-accent-blue">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 orbitron">Mechanical Systems</h3>
+                    <p class="opacity-80">Designing and optimizing complex mechanical systems with precision engineering principles.</p>
+                </div>
+                <div class="card-hover bg-steel-grey/50 backdrop-blur-md p-10 rounded-2xl border border-steel-grey/30 fade-in" style="animation-delay: 0.2s">
+                    <div class="text-4xl mb-6 text-accent-blue">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 orbitron">Robotics Engineering</h3>
+                    <p class="opacity-80">Building autonomous systems and robotic mechanisms for real-world applications.</p>
+                </div>
+                <div class="card-hover bg-steel-grey/50 backdrop-blur-md p-10 rounded-2xl border border-steel-grey/30 fade-in" style="animation-delay: 0.4s">
+                    <div class="text-4xl mb-6 text-accent-blue">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 orbitron">CAD & Prototyping</h3>
+                    <p class="opacity-80">Advanced CAD modeling, simulation, and rapid prototyping expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
 
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-6xl orbitron font-black mb-6">PROJECTS</h2>
+                <div class="w-24 h-1 bg-accent-blue mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card-hover group bg-gradient-to-br from-steel-grey/70 to-black/50 backdrop-blur-md rounded-3xl p-8 border-2 border-steel-grey/30 hover:border-accent-blue/50 transition-all duration-500 fade-in">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-16 h-16 bg-accent-blue/20 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:rotate-180 transition-transform duration-700">
+                            <i class="fas fa-mars-rover text-2xl text-accent-blue"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold orbitron mb-2 group-hover:text-accent-blue transition-colors">SPROS International Rover Challenge</h3>
+                            <p class="opacity-75 text-sm">Gearbox + Rocker Bogie Suspension</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 opacity-80 leading-relaxed">Designed custom planetary gearbox and rocker-bogie suspension system for Mars rover prototype. Achieved 30% weight reduction while maintaining 150kg payload capacity.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Gear Design</span>
+                        <span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Suspension</span>
+                        <span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">SolidWorks</span>
+                    </div>
+                </div>
 
-
-<!-- EXPERIENCE SECTION -->
-<section id="experience" class="section">
-
-<h2 class="section-title">EXPERIENCE</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-
-<div class="timeline-badge">
-<i class="fas fa-industry"></i>
+                <!-- Project 2 -->
+                <div class="card-hover group bg-gradient-to-br from-steel-grey/70 to-black/50 backdrop-blur-md rounded-3xl p-8 border-2 border-steel-grey/30 hover:border-accent-blue/50 transition-all duration-500 fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-16 h-16 bg-accent-blue/20 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:rotate-180 transition-transform duration-700">
+                            <i class="fas fa-satellite text-2xl text-accent-blue"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold orbitron mb-2 group-hover:text-accent-blue transition-colors">Astrobiology League Mission</h3>
+                            <p class="opacity-75 text-sm">Subsurface Exploration System</p>
+                        </div>
+                    </div>
+                    <p class="mb-6 opacity-80 leading-relaxed">Developed subsurface exploration mechanism for astrobiology research. Integrated soil sampling, imaging, and data transmission systems.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">
+                            Soil Mechanics</span>
+<span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Sensors</span>
+<span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Embedded Systems</span>
+</div>
 </div>
 
-<div class="timeline-content metal-card">
+<!-- Project 3 -->
+<div class="card-hover group bg-gradient-to-br from-steel-grey/70 to-black/50 backdrop-blur-md rounded-3xl p-8 border-2 border-steel-grey/30 hover:border-accent-blue/50 transition-all duration-500 fade-in" style="animation-delay:0.4s">
+<div class="flex items-start gap-4 mb-6">
+<div class="w-16 h-16 bg-accent-blue/20 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:rotate-180 transition-transform duration-700">
+<i class="fas fa-robot text-2xl text-accent-blue"></i>
+</div>
+<div>
+<h3 class="text-2xl font-bold orbitron mb-2 group-hover:text-accent-blue transition-colors">
+Line Follower Robot
+</h3>
+<p class="opacity-75 text-sm">Autonomous Navigation</p>
+</div>
+</div>
 
-<h3>Summer Intern – Banas Dairy</h3>
-
-<p>
-Gained exposure to operations at one of Asia’s largest milk processing
-facilities handling more than 50 lakh litres of milk per day.
-Studied pasteurizers, homogenizers, refrigeration units,
-boilers and automated packaging systems.
-Analyzed pasteurization and chilling systems operating in the
-72–75°C temperature control range.
+<p class="mb-6 opacity-80 leading-relaxed">
+Designed and built a high-speed autonomous line follower robot using sensor arrays and optimized control logic for accurate path tracking during robotics competitions.
 </p>
 
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Sensors</span>
+<span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Control Systems</span>
+<span class="px-3 py-1 bg-accent-blue/20 text-accent-blue text-xs rounded-full font-medium">Embedded C</span>
+</div>
 </div>
 
 </div>
-
-
-<div class="timeline-item">
-
-<div class="timeline-badge">
-<i class="fas fa-robot"></i>
 </div>
-
-<div class="timeline-content metal-card">
-
-<h3>SPROS International Rover Challenge</h3>
-
-<p>
-Designed a rover drivetrain including a 13:1 cycloidal gearbox,
-30:1 worm gearbox and rocker-bogie suspension system.
-The gearbox handles up to 20 kg load and suspension supports
-approximately 100 kg. Achieved All India Rank 9 among
-50+ national teams.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
 
+<!-- Section Divider -->
+<div class="section-divider"></div>
 
+<!-- Skills Section -->
+<section id="skills" class="py-32 bg-black">
+<div class="container mx-auto px-6">
 
-<!-- PROJECTS -->
-<section id="projects" class="section">
-
-<h2 class="section-title">PROJECTS</h2>
-
-<div class="projects-grid">
-
-
-<div class="metal-card">
-
-<h3>Walking Robot – Theo Jansen Linkage</h3>
-
-<div class="project-3d"></div>
-
-<p>
-Designed and fabricated a six-leg walking robot using
-Theo Jansen and Klann linkages.
-Optimized more than 15 CAD linkage components improving
-stride smoothness by approximately 25%.
-</p>
-
+<div class="text-center mb-24">
+<h2 class="text-5xl md:text-6xl orbitron font-black mb-6">SKILLS</h2>
+<div class="w-24 h-1 bg-accent-blue mx-auto"></div>
 </div>
 
+<div class="grid md:grid-cols-2 gap-10">
 
+<div class="fade-in">
+<p class="mb-2">Mechanical Design</p>
+<div class="w-full bg-steel-grey h-3 rounded">
+<div class="progress-fill h-3 rounded" style="width:85%"></div>
+</div>
+</div>
 
-<div class="metal-card">
+<div class="fade-in">
+<p class="mb-2">SolidWorks / CAD</p>
+<div class="w-full bg-steel-grey h-3 rounded">
+<div class="progress-fill h-3 rounded" style="width:80%"></div>
+</div>
+</div>
 
-<h3>Rover Gearbox Design</h3>
+<div class="fade-in">
+<p class="mb-2">Robotics Systems</p>
+<div class="w-full bg-steel-grey h-3 rounded">
+<div class="progress-fill h-3 rounded" style="width:75%"></div>
+</div>
+</div>
 
-<div class="project-3d"></div>
-
-<div class="project-stats">
-
-<div class="stat-badge">Cycloidal 13:1</div>
-<div class="stat-badge">Worm 30:1</div>
-<div class="stat-badge">Load 20kg</div>
-
+<div class="fade-in">
+<p class="mb-2">Manufacturing Processes</p>
+<div class="w-full bg-steel-grey h-3 rounded">
+<div class="progress-fill h-3 rounded" style="width:70%"></div>
+</div>
 </div>
 
 </div>
-
-
-
-<div class="metal-card">
-
-<h3>Europa Subsurface Drilling Concept</h3>
-
-<div class="project-3d"></div>
-
-<p>
-Conceptual drilling mechanism for Europa exploration targeting
-1–2 meter ice penetration. System considered thermal insulation,
-load transfer and mechanical sealing under extreme cryogenic
-conditions.
-</p>
-
 </div>
-
-
-</div>
-
 </section>
 
+<!-- Contact -->
+<section id="contact" class="py-32 text-center">
+<div class="container mx-auto px-6">
 
+<h2 class="text-5xl orbitron font-black mb-6">CONTACT</h2>
 
-<!-- SKILLS -->
-<section id="skills" class="section">
+<p class="opacity-80 mb-10">
+Interested in engineering collaboration or internships.
+</p>
 
-<h2 class="section-title">SKILLS</h2>
-
-<div class="skills-grid">
-
-
-<div class="gauge-container">
-<div class="gauge">
-<div class="gauge-inner">Systems</div>
-</div>
-<p>Mechanical Systems</p>
-</div>
-
-
-<div class="gauge-container">
-<div class="gauge">
-<div class="gauge-inner">CAD</div>
-</div>
-<p>Design & Modeling</p>
-</div>
-
-
-<div class="gauge-container">
-<div class="gauge">
-<div class="gauge-inner">SQL</div>
-</div>
-<p>Data Handling</p>
-</div>
-
-
-<div class="gauge-container">
-<div class="gauge">
-<div class="gauge-inner">Team</div>
-</div>
-<p>Leadership</p>
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-
-<h2 class="section-title">CONTACT</h2>
-
-<div class="control-panel">
-
-<div class="contact-grid">
-
-<div class="contact-control">
-
-<div class="control-knob">
+<div class="flex justify-center gap-8 text-3xl">
+<a href="mailto:rimmy@email.com" class="hover:text-accent-blue">
 <i class="fas fa-envelope"></i>
-</div>
+</a>
 
-<div>
-<h3>Email</h3>
-<p>rimmygupta2403@gmail.com</p>
-</div>
-
-</div>
-
-
-<div class="contact-control">
-
-<div class="control-knob">
+<a href="https://linkedin.com" class="hover:text-accent-blue">
 <i class="fab fa-linkedin"></i>
-</div>
+</a>
 
-<div>
-<h3>LinkedIn</h3>
-<p>linkedin.com/in/rimmygupta</p>
-</div>
-
-</div>
-
-
-<div class="contact-control">
-
-<div class="control-knob">
-<i class="fas fa-map-marker-alt"></i>
-</div>
-
-<div>
-<h3>Location</h3>
-<p>Palanpur, Gujarat, India</p>
+<a href="#" class="hover:text-accent-blue">
+<i class="fab fa-github"></i>
+</a>
 </div>
 
 </div>
-
-
-</div>
-
-</div>
-
 </section>
-
-
 
 <script>
 
-/* Cursor */
+window.addEventListener("load",()=>{
+document.getElementById("loading").style.display="none"
+})
 
-const cursor = document.getElementById("cursor");
-
-document.addEventListener("mousemove", e => {
-
-cursor.style.left = e.clientX + "px";
-cursor.style.top = e.clientY + "px";
-
-});
-
-
-/* Section animation */
-
-const sections = document.querySelectorAll(".section");
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
-
-entry.target.classList.add("visible");
-
+entry.target.classList.add("visible")
 }
+})
+})
 
-});
-
-});
-
-sections.forEach(section => {
-
-observer.observe(section);
-
-});
-
-
-/* Navigation */
-
-const buttons = document.querySelectorAll(".nav-btn");
-
-buttons.forEach(btn => {
-
-btn.addEventListener("click", () => {
-
-const target = btn.dataset.section;
-
-document.getElementById(target).scrollIntoView({
-behavior:"smooth"
-});
-
-buttons.forEach(b => b.classList.remove("active"));
-btn.classList.add("active");
-
-});
-
-});
-
-
-/* THREE JS background */
-
-const canvas = document.getElementById("mechanical-canvas");
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-75,
-window.innerWidth/window.innerHeight,
-0.1,
-1000
-);
-
-const renderer = new THREE.WebGLRenderer({canvas, alpha:true});
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-camera.position.z = 5;
-
-
-const geometry = new THREE.BufferGeometry();
-const vertices = [];
-
-for(let i=0;i<2000;i++){
-
-vertices.push(
-(Math.random()-0.5)*10,
-(Math.random()-0.5)*10,
-(Math.random()-0.5)*10
-);
-
-}
-
-geometry.setAttribute(
-'position',
-new THREE.Float32BufferAttribute(vertices,3)
-);
-
-const material = new THREE.PointsMaterial({
-color:0xD4AF37,
-size:0.03
-});
-
-const particles = new THREE.Points(geometry,material);
-
-scene.add(particles);
-
-
-function animate(){
-
-requestAnimationFrame(animate);
-
-particles.rotation.x += 0.0005;
-particles.rotation.y += 0.001;
-
-renderer.render(scene,camera);
-
-}
-
-animate();
-
+document.querySelectorAll(".fade-in").forEach(el=>{
+observer.observe(el)
+})
 
 </script>
 
